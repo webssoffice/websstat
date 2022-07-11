@@ -1,0 +1,188 @@
+@charset "UTF-8";
+
+body {
+	text-align: center; 
+	font-family: Calibri,sans-serif;
+}
+
+h4 {
+	margin: 0;
+	padding: 8px 0 8px 8px;
+	color: #005f9f;
+}
+
+.clear {
+	clear: both;
+}
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('/websstat/img/loader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+
+#container {
+	margin: auto;
+	text-align: left;
+	width: 920px;
+} 
+
+.text-center {
+	text-align: center;
+}
+
+#header {
+	margin: 0 0 8px 0;
+	padding: 0;
+	border-bottom: 1px solid #737472;
+	background: url('/websstat/img/logo.png') no-repeat;
+	height: 70px;
+}
+	
+#header h1 {
+	font-size: 16px;
+	margin: 0;
+	padding: 10px;
+}
+	
+#header a {
+	background-color: #F3F2ED;
+}
+	
+.column {
+	float: left;
+	width: 23.9%;
+	margin: 0 4px;
+	padding: 0;
+	border: 1px solid #737472;
+	border-radius: 3px;
+}
+
+.column span {
+	display: block;
+	margin: 0 0 10px 8px;
+}
+
+
+#content p {
+	margin: 0 10px;
+}
+
+#content table {
+	width: 920px;
+}
+
+#content thead {
+	background: #005f9f;
+	color: #FFFFFF;
+}
+
+#content thead td {
+	font-weight: bolder;
+}
+
+#content td {
+	padding: 8px;
+}
+
+#content table tbody a {
+	font-size: 16px;
+	font-weight: normal;
+	color: #000000;
+}
+
+.white {
+	background: #FFFFFF;
+}
+
+.gray {
+	background: #a3d4f5;
+}
+
+.col-one {
+	width: 20px;
+}
+
+.col-two {
+	width: 74px;
+}
+
+.col-three {
+	width: 110px;
+}
+
+.col-four {
+	width: 92px;
+}
+
+.col-five {
+	width: 88px;
+}
+
+.col-six {
+	width: 40px;
+}
+
+.col-seven {
+	width: 208px;
+}
+
+#content ul {
+	margin: 0;
+	padding: 0;
+	width: 920px;
+}
+
+#content ul li {
+	padding: 0 10px;
+	display: inline;
+}
+
+#content li:first-child {
+	float: left;
+}
+
+#content li:last-child {
+	float: right;
+}
+
+#content a {
+	color: #005f9f;
+	font-size: 26px;
+	text-decoration: none;
+	font-weight: bolder;
+	margin: 0;
+	padding: 0;
+}
+
+.border-left {
+	border-left: 1px solid #737472;
+	border-bottom: 1px solid #737472;
+}
+
+.border-right {
+	border-right: 1px solid #737472;
+	border-bottom: 1px solid #737472;
+}
+
+.border-last {
+	border-left: 1px solid #737472;
+}
+
+#footer {
+	border-top: 1px solid #737472;
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	font-size: 10px;
+	text-align: center;
+}
+
+#footer a {
+    color: #005f9f;
+    text-decoration: none;
+}

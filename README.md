@@ -1,6 +1,6 @@
 # websstat - Statistics and Counter
 
-Website statistics with local DB (NO Mysql)
+Website statistics with local DB (NO MySQL)
 
 Include this path in your site's footer: <?php include_once("websstat/websstat.php"); ?>
 

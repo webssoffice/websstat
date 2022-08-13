@@ -1223,7 +1223,7 @@
 <head>
 	<title>websstat - Statistics and Counter</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
-	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="/websstat/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="/websstat/css/styles.css">
 	<script type="text/javascript" src="/websstat/js/jquery.min.js"></script>
 	<script type="text/javascript">

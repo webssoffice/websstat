@@ -3,7 +3,7 @@
 	error_reporting(0);
 	
 	/* Total number of days from the beginning of the analysis of the site until today */
-	$start_time = strtotime("11-07-2022"); // Date of starting the analysis of the site
+	$start_time = strtotime("05-02-2022"); // Date of starting the analysis of the site -1
 	$end_time = strtotime(date("d-m-Y"));
 	$time_diff = abs($end_time - $start_time);
 	$number_days = $time_diff/86400;  // 86400 seconds in a day
@@ -11,7 +11,6 @@
 		
 	/* Total */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_total = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -23,13 +22,13 @@
 					$element = explode("#", $value);
 					
 					if (!empty($element[0]) && $element[1] != "Spider" && $element[2] != "Spider") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_total++;
@@ -44,18 +43,17 @@
 	if (file_exists("db/".date("m-Y").".txt")) {
 		$contents = file_get_contents("db/".date("m-Y").".txt");
 		$records = explode("\n", $contents);
-		$array = "";
 		$count_today = 0;
 		
 		foreach ($records as $value) {
 			$element = explode("#", $value);
 			
 			if ($element[4] == date("d-m-Y") && $element[1] != "Spider" && $element[2] != "Spider") {
-				$array[] .= $element[0];
+				$arrayElement[] .= $element[0];
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 			
 		foreach ($array as $value) {
 			if ($element[4] == date("d-m-Y")) {
@@ -70,18 +68,17 @@
 	if (file_exists("db/".date("m-Y").".txt")) {
 		$contents = file_get_contents("db/".date("m-Y").".txt");
 		$records = explode("\n", $contents);
-		$array = "";
 		$count_yesterday = 0;
 		
 		foreach ($records as $value) {
 			$element = explode("#", $value);
 			
 			if ($element[4] == date("d-m-Y", strtotime("-1 day")) && $element[1] != "Spider" && $element[2] != "Spider") {
-				$array[] .= $element[0];
+				$arrayElement[] .= $element[0];
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 			
 		foreach ($array as $value) {
 			$count_yesterday++;
@@ -98,18 +95,17 @@
 	if (file_exists("db/".date("m-Y").".txt")) {
 		$contents = file_get_contents("db/".date("m-Y").".txt");
 		$records = explode("\n", $contents);
-		$array = "";
 		$count_this_month = 0;
 		
 		foreach ($records as $value) {
 			$element = explode("#", $value);
 			
 			if ($element[1] != "Spider" && $element[2] != "Spider") {
-				$array[] .= $element[0];
+				$arrayElement[] .= $element[0];
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_this_month++;
@@ -122,18 +118,17 @@
 	if (file_exists("db/".date("m-Y", strtotime("-1 month")).".txt")) {
 		$contents = file_get_contents("db/".date("m-Y", strtotime("-1 month")).".txt");
 		$records = explode("\n", $contents);
-		$array = "";
 		$count_last_month = 0;
 		
 		foreach ($records as $value) {
 			$element = explode("#", $value);
 			
 			if ($element[1] != "Spider" && $element[2] != "Spider") {
-				$array[] .= $element[0];
+				$arrayElement[] .= $element[0];
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 	
 		foreach ($array as $value) {
 			$count_last_month++;
@@ -144,7 +139,6 @@
 	
 	/* This year */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_this_year = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -156,13 +150,13 @@
 					$element = explode("#", $value);
 					
 					if (!empty($element[0]) && $element[1] != "Spider" && $element[2] != "Spider") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_this_year++;
@@ -175,7 +169,6 @@
 	
 	/* Last year */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_last_year = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -187,13 +180,13 @@
 					$element = explode("#", $value);
 					
 					if (!empty($element[0]) && $element[1] != "Spider" && $element[2] != "Spider") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_last_year++;
@@ -352,7 +345,6 @@
 	
 	/* Chrome */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_chrome = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -364,13 +356,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[1] == "Chrome") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_chrome++;
@@ -383,7 +375,6 @@
 
 	/* Edge */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_ie = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -395,13 +386,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[1] == "Edge") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_ie++;
@@ -414,7 +405,6 @@
 	
 	/* Internet Explorer */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_ie = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -426,13 +416,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[1] == "Internet Explorer") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_ie++;
@@ -445,7 +435,6 @@
 	
 	/* Fiefox */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_firefox = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -457,13 +446,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[1] == "Firefox") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_firefox++;
@@ -476,7 +465,6 @@
 	
 	/* Safari */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_safari = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -488,13 +476,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[1] == "Safari") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_safari++;
@@ -507,7 +495,6 @@
 	
 	/* Opera */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_opera = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -519,13 +506,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[1] == "Opera") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_opera++;
@@ -538,7 +525,6 @@
 	
 	/* Spider */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_spider = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -550,13 +536,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Spider") { // Modificat $element[1] in $element[2]
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_spider++;
@@ -569,7 +555,6 @@
 
 	/* Windows 11 */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_win11 = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -581,13 +566,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Windows 11") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_win11++;
@@ -600,7 +585,6 @@
 	
 	/* Windows 10 */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_win10 = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -612,13 +596,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Windows 10") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_win10++;
@@ -631,7 +615,6 @@
 	
 	/* Windows 8.1 */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_win81 = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -643,13 +626,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Windows 8.1") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_win81++;
@@ -662,7 +645,6 @@
 	
 	/* Windows 8 */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_win8 = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -674,13 +656,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Windows 8") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_win8++;
@@ -693,7 +675,6 @@
 	
 	/* Windows 7 */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_win7 = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -705,13 +686,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Windows 7") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_win7++;
@@ -724,7 +705,6 @@
 	
 	/* Windows Vista */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_winvista = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -736,13 +716,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Windows Vista") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_winvista++;
@@ -755,7 +735,6 @@
 	
 	/* Windows XP */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_winxp = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -767,13 +746,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Windows XP") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_winxp++;
@@ -786,7 +765,6 @@
 	
 	/* Linux */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_linux = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -798,13 +776,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Linux") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_linux++;
@@ -817,7 +795,6 @@
 	
 	/* Mac OS */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_mac = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -829,13 +806,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Mac OS") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_mac++;
@@ -848,7 +825,6 @@
 	
 	/* Android */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_android = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -860,13 +836,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[2] == "Android") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_android++;
@@ -910,7 +886,6 @@
 
 	/* ENGLISH language */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_en = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -922,13 +897,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[3] == "EN") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_en++;
@@ -941,7 +916,6 @@
 	
 	/* ITALIAN language */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_it = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -953,13 +927,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[3] == "IT") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_it++;
@@ -972,7 +946,6 @@
 	
 	/* ROMANIAN language */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_ro = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -984,13 +957,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[3] == "RO") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_ro++;
@@ -1003,7 +976,6 @@
 	
 	/* RUSSIAN language */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_ru = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -1015,13 +987,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[3] == "RU") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_ru++;
@@ -1034,7 +1006,6 @@
 	
 	/* GERMAN language */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_de = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -1046,13 +1017,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[3] == "DE") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_de++;
@@ -1065,7 +1036,6 @@
 	
 	/* FRENCH language */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_fr = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -1077,13 +1047,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[3] == "FR") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_fr++;
@@ -1096,7 +1066,6 @@
 	
 	/* SPANISH language */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_es = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -1108,13 +1077,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[3] == "ES") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_es++;
@@ -1127,7 +1096,6 @@
 	
 	/* HUNGARIAN language */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_hu = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -1139,13 +1107,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[3] == "HU") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_hu++;
@@ -1158,7 +1126,6 @@
 	
 	/* BULGARIAN language */
 	if ($handle = opendir("db/")) {
-		$array = "";
 		$count_bg = 0;
 		
 		while (false !== ($entry = readdir($handle))) {
@@ -1170,13 +1137,13 @@
 					$element = explode("#", $value);
 					
 					if ($element[3] == "BG") {
-						$array[] .= $element[0];
+						$arrayElement[] .= $element[0];
 					}
 				}
 			}
 		}
 		
-		$array = array_unique($array);
+		$array = array_unique($arrayElement);
 		
 		foreach ($array as $value) {
 			$count_bg++;
@@ -1189,7 +1156,6 @@
 	
 	/* Visitors by year */
 	// if ($handle = opendir("db/")) {
-		// $array = "";
 		// $count_years = 0;
 		
 		// while (false !== ($entry = readdir($handle))) {
@@ -1202,13 +1168,13 @@
 					
 					// if (!empty($element[0]) && $element[1] != "Spider" && $element[2] != "Spider") {
 						// $records = explode("-", $element[4]);
-						// $array[] .= $element[4];
+						// $arrayElement[] .= $element[4];
 					// }
 				// }
 			// }
 		// }
 		
-		// foreach ($array as $value) {
+		// foreach ($array as $arrayElement) {
 			// echo array_count_values($value);
 		// }
 		
